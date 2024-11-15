@@ -1,0 +1,20 @@
+{
+	"geolocation": {
+		"data": {
+			"city": "Vero Beach",
+			"country": {
+				"code": "US",
+				"name": "United States"
+			},
+			"subdivision": {
+				"code": "FL",
+				"name": "Florida"
+			},
+			"timezone": "America/New_York",
+			"latitude": 27.6006,
+			"longitude": -80.4359,
+			"postalCode": "32968"
+		},
+		"timestamp": 1731708684013
+	}
+}

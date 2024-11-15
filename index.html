@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Duotone Image Editor</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Sour+Gummy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="img/gu.png" alt="Hue Two: A Duotone Zoo Logo" class="glogo"><br>
+            <img src="img/logo.png" alt="Hue Two: A Duotone Zoo Logo" class="logo">
+        </header>
+        
+        <!-- Wrapper for description and search bar for consistent width -->
+        <div class="content-wrapper">
+            <p class="description">
+                Welcome to my Hue Two: A Duotone Zoo web app! Duotone is a cool design effect that adds two contrasting colors to an image, 
+                giving it a unique, artistic vibe. It works by layering one halftone color over another, usually to highlight the 
+                midtones and highlights in a way that stands out.
+            </p>
+            <p class="description">
+                To get started, search Unsplash for an image (or upload your own image), pick two colors you like, and click 
+                "Apply Effect" to see how it transforms your image. If you like the result, be sure to hit that Download button!
+            </p>
+
+            <!-- Search bar for Unsplash images -->
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search Unsplash">
+                <button id="searchButton"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+
+        <!-- Upload section with Font Awesome icon for upload -->
+        <div class="upload-section">
+            <label for="imageInput" class="upload-label">
+                <p>Or upload your own!</p>
+                <i class="fas fa-upload"></i> Upload
+            </label>
+            <input type="file" id="imageInput" accept="image/*" style="display: none;" />
+        </div>
+
+        <!-- Color selectors -->
+        <div class="color-inputs">
+            <label for="color1">Color 1:</label>
+            <input type="color" id="color1" value="#212121">
+            <label for="color2">Color 2:</label>
+            <input type="color" id="color2" value="#ffa406">
+        </div>
+
+        <!-- Button group for Apply Effect and Download -->
+        <div class="button-group">
+            <button id="applyButton" class="button">Apply Effect</button>
+            <button id="downloadButton" class="button">Download</button>
+        </div>
+        <!-- Canvas for displaying the duotone image -->
+        <canvas id="canvas"></canvas>
+
+
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
