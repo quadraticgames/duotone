@@ -1,34 +1,46 @@
-body {
-    font-family: 'Sour Gummy', sans-serif;
+/* 
+ * General Body Styling
+ * Sets the overall look and feel of the app, including font, layout, and background color.
+ */
+ body {
+    font-family: 'Sour Gummy', sans-serif; /* Fun and playful font */
     display: flex;
-    justify-content: center;
-    align-items: start;
-    min-height: 100vh;
+    justify-content: center; /* Center container horizontally */
+    align-items: start; /* Align content to the top */
+    min-height: 100vh; /* Ensure the body fills the viewport height */
     margin: 0;
     padding: 0;
-    background-color: #121212;
-    color: #f4f4f4;
-    overflow-y: auto;
+    background-color: #121212; /* Dark theme background */
+    color: #f4f4f4; /* Light text color for readability */
+    overflow-y: auto; /* Enable vertical scrolling if needed */
 }
 
+/* 
+ * Container Styling
+ * The main wrapper for the app content, including background, padding, and layout adjustments.
+ */
 .container {
     text-align: left;
-    max-width: 800px;
-    width: 100%;
-    margin: 20px 0;
-    padding: 20px;
-    background-color: #1e1e1e;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    max-width: 800px; /* Restrict the container width */
+    width: 100%; /* Make it responsive */
+    margin: 20px 0; /* Add space above and below the container */
+    padding: 20px; /* Inner padding */
+    background-color: #1e1e1e; /* Slightly lighter dark background */
+    border-radius: 10px; /* Smooth rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Stack items vertically */
     align-items: center;
-    overflow: hidden;
+    overflow: hidden; /* Prevent content overflow issues */
 }
 
+/* 
+ * Header and Logo Styling
+ * Styles for the logo and main title.
+ */
 header h1 {
     font-size: 2rem;
-    color: #ffa406;
+    color: #ffa406; /* Bright orange title color */
     text-align: center;
 }
 
@@ -40,112 +52,166 @@ header h1 {
 }
 
 .glogo {
-    width: 150px;
-    height: auto;
+    width: 150px; /* Smaller logo */
+    height: auto; /* Maintain aspect ratio */
     margin-bottom: 10px;
     display: block;
     margin-left: auto;
     margin-right: auto;
 }
 
-/* Wrapper for consistent width of description and search bar */
+/* 
+ * Wrapper for content like descriptions and search bar
+ * Keeps the width consistent for better alignment.
+ */
 .content-wrapper {
-    max-width: 600px; /* Adjust this to control the width */
+    max-width: 600px; /* Restricts the width */
     width: 100%;
-    margin: 0 auto;
-    text-align: center;
+    margin: 0 auto; /* Centers the content */
+    text-align: center; /* Center-aligns the text */
 }
 
+/* 
+ * Description Styling
+ * Adds margins and aligns text.
+ */
 .description {
     margin: 10px 0;
-    text-align: left;
+    text-align: left; /* Align text to the left for better readability */
 }
 
+/* 
+ * Search Bar Styling
+ * Styles the input field and button for searching Unsplash.
+ */
 .search-bar {
     margin-top: 20px;
     display: flex;
     margin-bottom: 10px;
     width: 100%;
-    justify-content: center;
-
+    justify-content: center; /* Centers the search bar */
 }
 
 .search-bar input {
-    width: 80%;
+    width: 80%; /* Input field takes up 80% of the width */
     padding: 8px;
-    border-radius: 20px;
+    border-radius: 20px; /* Rounded input field */
     border: none;
     outline: none;
     font-size: 14px;
-    font-family: 'Sour Gummy', sans-serif;
+    font-family: 'Sour Gummy', sans-serif; /* Matches the app's playful font */
 }
 
 .search-bar button {
-    background: none;
+    background: none; /* Transparent background */
     border: none;
-    cursor: pointer;
+    cursor: pointer; /* Pointer cursor on hover */
     padding: 0 8px;
-    color: #f4f4f4;
+    color: #f4f4f4; /* Matches the text color */
     font-size: 20px;
-
 }
 
+/* 
+ * Upload Section Styling
+ * Styles for the image upload area.
+ */
 .upload-section {
     text-align: center;
 }
 
 .upload-label {
-    cursor: pointer;
-    color: #ffffff;
+    cursor: pointer; /* Makes the label interactive */
+    color: #ffffff; /* White text for contrast */
     font-size: 20px;
-    font-family: 'Sour Gummy', sans-serif;
+    font-family: 'Sour Gummy', sans-serif; /* Playful font for labels */
 }
 
+/* 
+ * Color Picker Styling
+ * Adjusts spacing and layout for the two color pickers.
+ */
 .color-inputs {
     margin-top: 40px;
     display: flex;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
+    justify-content: center; /* Centers the color pickers */
+    gap: 10px; /* Space between pickers */
+    flex-wrap: wrap; /* Adjusts layout for smaller screens */
 }
 
+/* 
+ * Canvas Styling
+ * Ensures the canvas fits well within the container.
+ */
 canvas {
     margin-top: 20px;
-    max-width: 100%;
-    max-height: 70vh;
-    border: none;
+    max-width: 100%; /* Ensures responsiveness */
+    max-height: 70vh; /* Keeps the canvas height within the viewport */
+    border: none; /* Removes any default borders */
 }
 
+/* 
+ * Button Group Styling
+ * Styles for the "Apply Effect" and "Download" buttons.
+ */
 .button-group {
     display: flex;
-    gap: 10px;
+    gap: 10px; /* Space between buttons */
     margin-top: 20px;
 }
 
 .button {
-    width: 150px;
+    width: 150px; /* Uniform button width */
     padding: 10px;
     font-size: 16px;
     border: none;
-    border-radius: 5px;
+    border-radius: 5px; /* Rounded corners for modern styling */
     cursor: pointer;
-    font-family: 'Sour Gummy', sans-serif;
+    font-family: 'Sour Gummy', sans-serif; /* Matches the playful font */
 }
 
 #applyButton {
-    background-color: #356092;
-    color: #ffffff;
+    background-color: #356092; /* Primary blue color */
+    color: #ffffff; /* White text */
 }
 
 #applyButton:hover {
-    background-color: #508cd0;
+    background-color: #508cd0; /* Lighter blue on hover */
 }
 
 #downloadButton {
-    background-color: #356092;
+    background-color: #356092; /* Matches the apply button */
     color: #ffffff;
 }
 
 #downloadButton:hover {
-    background-color: #508cd0;
+    background-color: #508cd0; /* Matches hover effect of apply button */
+}
+
+/* 
+ * Media Queries for Mobile Responsiveness
+ * Ensures the app looks great on smaller screens.
+ */
+@media (max-width: 768px) {
+    .logo {
+        width: 300px; /* Reduce logo size for smaller screens */
+    }
+
+    .content-wrapper {
+        max-width: 90%; /* Use more of the screen width */
+    }
+
+    .search-bar input {
+        width: 100%; /* Search bar spans the full width */
+        font-size: 12px; /* Adjust font size for smaller screens */
+    }
+
+    .button-group {
+        flex-direction: column; /* Stack buttons vertically */
+        gap: 15px; /* Add more space between stacked buttons */
+    }
+
+    .button {
+        width: 100%; /* Buttons take full width on mobile */
+        font-size: 14px; /* Adjust font size */
+    }
 }
