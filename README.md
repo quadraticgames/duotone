@@ -16,7 +16,7 @@ Welcome to **Hue Two: A Duotone Zoo**, a fun and interactive duotone image edito
 
 ## Demo
 
-[Live Demo on Netlify](https://your-netlify-url.netlify.app)
+[Live Demo on Netlify](https://duotoneapp.netlify.app)
 
 ---
 
