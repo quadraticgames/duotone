@@ -1,2 +1,11 @@
 # Local Netlify folder
 .netlify
+
+# Secrets
+.env
+
+# Dependencies
+node_modules/
+
+# Tooling
+.playwright-mcp/
