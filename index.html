@@ -3,64 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Duotone Image Editor</title>
+    <title>Hue Two: A Duotone Zoo — Duotone Image Editor</title>
+    <meta name="description" content="Transform any photo into a bold two-color duotone. Search Unsplash or upload your own image, pick two colors, and download.">
+    <link rel="icon" type="image/svg+xml" href="huetwo.svg">
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Sour+Gummy&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sour+Gummy:wght@400;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <img src="img/gu.png" alt="Hue Two: A Duotone Zoo Logo" class="glogo"><br>
-            <img src="img/logo.png" alt="Hue Two: A Duotone Zoo Logo" class="logo">
-        </header>
-        
-        <!-- Wrapper for description and search bar for consistent width -->
-        <div class="content-wrapper">
-            <p class="description">
-                Welcome to my Hue Two: A Duotone Zoo web app! Duotone is a cool design effect that adds two contrasting colors to an image, 
-                giving it a unique, artistic vibe. It works by layering one halftone color over another, usually to highlight the 
-                midtones and highlights in a way that stands out.
-            </p>
-            <p class="description">
-                To get started, search Unsplash for an image (or upload your own image), pick two colors you like, and click 
-                "Apply Effect" to see how it transforms your image. If you like the result, be sure to hit that Download button!
-            </p>
+    <!-- Ambient glow tinted by the active colors -->
+    <div class="ambient" aria-hidden="true"></div>
 
-            <!-- Search bar for Unsplash images -->
-            <div class="search-bar">
-                <input type="text" id="searchInput" placeholder="Search Unsplash">
-                <button id="searchButton"><i class="fas fa-search"></i></button>
+    <div class="app">
+        <!-- Sidebar: color controls -->
+        <aside class="sidebar" aria-label="Duotone controls">
+            <img src="huetwo.svg" alt="Hue Two mascot" class="mascot" width="77" height="90">
+
+            <div class="swatches">
+                <label class="swatch" id="swatch1" for="color1" title="Shadows color">
+                    <input type="color" id="color1" value="#0f2c5c">
+                    <span class="swatch-hex" id="hex1">#0f2c5c</span>
+                </label>
+
+                <button type="button" id="swapButton" class="icon-btn icon-btn--sm" title="Swap colors" aria-label="Swap colors">
+                    <i class="fas fa-arrows-alt-v"></i>
+                </button>
+
+                <label class="swatch" id="swatch2" for="color2" title="Highlights color">
+                    <input type="color" id="color2" value="#ff6f91">
+                    <span class="swatch-hex" id="hex2">#ff6f91</span>
+                </label>
             </div>
-        </div>
 
-        <!-- Upload section with Font Awesome icon for upload -->
-        <div class="upload-section">
-            <label for="imageInput" class="upload-label">
-                <p>Or upload your own!</p>
-                <i class="fas fa-upload"></i> Upload
-            </label>
-            <input type="file" id="imageInput" accept="image/*" style="display: none;" />
-        </div>
+            <div class="presets">
+                <span class="sidebar-label">Presets</span>
+                <div class="preset-grid" id="presetGrid"></div>
+            </div>
 
-        <!-- Color selectors -->
-        <div class="color-inputs">
-            <label for="color1">Color 1:</label>
-            <input type="color" id="color1" value="#212121">
-            <label for="color2">Color 2:</label>
-            <input type="color" id="color2" value="#ffa406">
-        </div>
+            <div class="sidebar-actions">
+                <button type="button" id="downloadButton" class="btn btn--primary">
+                    <i class="fas fa-download"></i> Download
+                </button>
+            </div>
+        </aside>
 
-        <!-- Button group for Apply Effect and Download -->
-        <div class="button-group">
-            <button id="applyButton" class="button">Apply Effect</button>
-            <button id="downloadButton" class="button">Download</button>
-        </div>
-        <!-- Canvas for displaying the duotone image -->
-        <canvas id="canvas"></canvas>
+        <!-- Main area -->
+        <main class="main">
+            <header class="topbar">
+                <h1 class="logo-wrap">
+                    <img src="img/logo.png" alt="Hue Two: A Duotone Zoo" class="logo">
+                </h1>
 
+                <div class="topbar-controls">
+                    <form class="search-bar" id="searchForm" role="search">
+                        <input type="text" id="searchInput" placeholder="Search Unsplash" autocomplete="off" aria-label="Search Unsplash">
+                        <button type="submit" id="searchButton" aria-label="Search"><i class="fas fa-search"></i></button>
+                    </form>
 
+                    <label for="imageInput" class="icon-btn" id="uploadButton" title="Upload your own image" aria-label="Upload image">
+                        <i class="fas fa-arrow-up"></i>
+                    </label>
+                    <input type="file" id="imageInput" accept="image/*" hidden>
+
+                    <button type="button" class="icon-btn" id="fullscreenButton" title="Toggle Fullscreen" aria-label="Toggle Fullscreen">
+                        <i class="fas fa-expand"></i>
+                    </button>
+                </div>
+            </header>
+
+            <section class="stage" id="stage">
+                <div class="empty-state" id="emptyState">
+                    <div class="empty-icon"><i class="fas fa-gear"></i></div>
+                    <h2>Two colors. Endless creations.</h2>
+                    <p>
+                        Duotone maps an image's shadows and highlights onto two contrasting colors,
+                        giving it a bold, artistic vibe. Search Unsplash or upload your own photo,
+                        then tweak the swatches on the left. The preview updates live!
+                    </p>
+                </div>
+
+                <div class="loader" id="loader" hidden><span></span><span></span><span></span></div>
+
+                <canvas id="canvas"></canvas>
+                <p class="credit" id="credit" hidden></p>
+            </section>
+        </main>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
