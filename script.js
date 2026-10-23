@@ -164,7 +164,11 @@ async function fetchUnsplashImage(queryOverride) {
             }
         } else {
             setLoading(false);
-            if (!queryOverride) alert("No image found for the specified query.");
+            const msg = !response.ok
+                ? `Search failed (${response.status}): ${data?.error || (data?.errors || []).join(', ') || 'Unknown error'}`
+                : "No image found for the specified query.";
+            console.error('Unsplash search error:', response.status, data);
+            if (!queryOverride) alert(msg);
         }
     } catch (error) {
         setLoading(false);
